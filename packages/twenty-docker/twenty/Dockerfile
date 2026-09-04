@@ -4,6 +4,13 @@
 
 FROM node:24.19.0-alpine3.23@sha256:244cc2b53f46f9e876304391d17682b0ddae9ac33491f4857e25e35a36ba7995 AS front-deps
 
+RUN apk add --no-cache git
+
+ENV YARN_HTTP_TIMEOUT=600000 \
+    YARN_NETWORK_CONCURRENCY=4 \
+    YARN_HTTP_RETRY=10 \
+    NODE_OPTIONS=--dns-result-order=ipv4first
+
 WORKDIR /app
 
 COPY ./package.json ./yarn.lock ./.yarnrc.yml ./tsconfig.base.json ./nx.json /app/
@@ -21,6 +28,13 @@ RUN yarn workspaces focus twenty twenty-front twenty-front-component-renderer tw
 
 
 FROM node:24.19.0-alpine3.23@sha256:244cc2b53f46f9e876304391d17682b0ddae9ac33491f4857e25e35a36ba7995 AS server-deps
+
+RUN apk add --no-cache git
+
+ENV YARN_HTTP_TIMEOUT=600000 \
+    YARN_NETWORK_CONCURRENCY=4 \
+    YARN_HTTP_RETRY=10 \
+    NODE_OPTIONS=--dns-result-order=ipv4first
 
 WORKDIR /app
 
@@ -61,6 +75,8 @@ RUN yarn workspaces focus --production twenty-emails twenty-shared twenty-client
 
 FROM front-deps AS twenty-front-build
 
+ARG FRONTEND_NODE_OPTIONS="--max-old-space-size=8192"
+
 COPY ./packages/twenty-front /app/packages/twenty-front
 COPY ./packages/twenty-front-component-renderer /app/packages/twenty-front-component-renderer
 COPY ./packages/twenty-ui /app/packages/twenty-ui
@@ -75,7 +91,7 @@ RUN npx nx run twenty-front:lingui:extract && \
 RUN if [ -d /app/packages/twenty-front/build ]; then \
       echo "Using pre-built frontend from host"; \
     else \
-      NODE_OPTIONS="--max-old-space-size=8192" npx nx build twenty-front; \
+      NODE_OPTIONS="${FRONTEND_NODE_OPTIONS}" npx nx build twenty-front; \
     fi
 
 
@@ -130,8 +146,8 @@ COPY --chown=1000 --from=twenty-server-build /app/packages/twenty-emails/dist /a
 COPY --chown=1000 --from=twenty-server-build /app/packages/twenty-client-sdk/package.json /app/packages/twenty-client-sdk/
 COPY --chown=1000 --from=twenty-server-build /app/packages/twenty-client-sdk/dist /app/packages/twenty-client-sdk/dist
 
-LABEL org.opencontainers.image.source=https://github.com/twentyhq/twenty
-LABEL org.opencontainers.image.description="Twenty server image (no frontend)."
+LABEL org.opencontainers.image.source=https://github.com/partnersdejoiy-hash/dejoiy-crm
+LABEL org.opencontainers.image.description="Dejoiy server image (no frontend)."
 
 # Remove unused, unpatchable components the scanner flags (none are executed at
 # runtime, and none can be fixed by upgrading our deps or Node):
@@ -184,7 +200,7 @@ FROM twenty-server AS twenty
 
 COPY --chown=1000 --from=twenty-front-build /app/packages/twenty-front/build /app/packages/twenty-server/dist/front
 
-LABEL org.opencontainers.image.description="Twenty image with backend and frontend."
+LABEL org.opencontainers.image.description="Dejoiy image with backend and frontend."
 
 
 # ===========================================================================
@@ -297,6 +313,6 @@ EXPOSE 2020
 VOLUME ["/data/postgres", "/app/packages/twenty-server/.local-storage"]
 
 LABEL org.opencontainers.image.source=https://github.com/twentyhq/twenty
-LABEL org.opencontainers.image.description="All-in-one Twenty image for local development and SDK usage. Includes PostgreSQL, Redis, server, and worker."
+LABEL org.opencontainers.image.description="All-in-one Dejoiy image for local development and SDK usage. Includes PostgreSQL, Redis, server, and worker."
 
 ENTRYPOINT ["/init"]

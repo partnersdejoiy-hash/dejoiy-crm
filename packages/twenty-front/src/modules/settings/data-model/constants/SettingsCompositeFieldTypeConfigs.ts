@@ -121,20 +121,20 @@ export const SETTINGS_COMPOSITE_FIELD_TYPE_CONFIGS = {
     ],
     exampleValues: [
       {
-        primaryEmail: 'tim@twenty.com',
+        primaryEmail: 'tim@dejoiy.com',
         additionalEmails: [
-          'tim@twenty.com',
-          'timapple@twenty.com',
-          'johnappletim@twenty.com',
+          'tim@dejoiy.com',
+          'timapple@dejoiy.com',
+          'johnappletim@dejoiy.com',
         ],
       },
       {
-        primaryEmail: 'jane@twenty.com',
-        additionalEmails: ['jane@twenty.com', 'jane.doe@twenty.com'],
+        primaryEmail: 'jane@dejoiy.com',
+        additionalEmails: ['jane@dejoiy.com', 'jane.doe@dejoiy.com'],
       },
       {
-        primaryEmail: 'john@twenty.com',
-        additionalEmails: ['john.doe@twenty.com'],
+        primaryEmail: 'john@dejoiy.com',
+        additionalEmails: ['john.doe@dejoiy.com'],
       },
     ],
     category: 'Basic',
@@ -179,14 +179,14 @@ export const SETTINGS_COMPOSITE_FIELD_TYPE_CONFIGS = {
     ],
     exampleValues: [
       {
-        primaryLinkUrl: 'twenty.com',
+        primaryLinkUrl: 'dejoiy.com',
         primaryLinkLabel: '',
-        secondaryLinks: [{ url: 'twenty.com', label: 'Twenty' }],
+        secondaryLinks: [{ url: 'dejoiy.com', label: 'Dejoiy' }],
       },
       {
-        primaryLinkUrl: 'github.com/twentyhq/twenty',
-        primaryLinkLabel: 'Twenty Repo',
-        secondaryLinks: [{ url: 'twenty.com', label: '' }],
+        primaryLinkUrl: 'github.com/partnersdejoiy-hash/dejoiy-crm',
+        primaryLinkLabel: 'Dejoiy Repo',
+        secondaryLinks: [{ url: 'dejoiy.com', label: '' }],
       },
       {
         primaryLinkUrl: 'react.dev',
