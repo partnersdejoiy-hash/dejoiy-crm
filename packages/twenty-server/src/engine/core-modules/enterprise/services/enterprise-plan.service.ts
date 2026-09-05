@@ -153,10 +153,15 @@ export class EnterprisePlanService implements OnModuleInit {
 
   hasValidSignedEnterpriseKey(): boolean {
     this.refreshKeyPayload();
-    return isDefined(this.cachedKeyPayload);
+
+    return this.isEnterpriseEnabledByConfig() || isDefined(this.cachedKeyPayload);
   }
 
   hasValidEnterpriseValidityToken(): boolean {
+    if (this.isEnterpriseEnabledByConfig()) {
+      return true;
+    }
+
     if (isDefined(this.cachedValidityPayload)) {
       const now = Math.floor(Date.now() / 1000);
 
@@ -170,11 +175,26 @@ export class EnterprisePlanService implements OnModuleInit {
     return this.hasValidEnterpriseValidityToken();
   }
 
+  // Self-hosted deployments can force-enable enterprise features without a
+  // paid key via the IS_ENTERPRISE_ENABLED config variable.
+  isEnterpriseEnabledByConfig(): boolean {
+    return this.twentyConfigService.get('IS_ENTERPRISE_ENABLED') === true;
+  }
+
   isValidEnterpriseKeyFormat(key: string): boolean {
     return this.verifyJwt<EnterpriseKeyPayload>(key) !== null;
   }
 
   async getLicenseInfo(): Promise<EnterpriseLicenseInfo> {
+    if (this.isEnterpriseEnabledByConfig()) {
+      return {
+        isValid: true,
+        licensee: this.cachedKeyPayload?.licensee ?? null,
+        expiresAt: null,
+        subscriptionId: null,
+      };
+    }
+
     this.refreshKeyPayload();
     await this.loadValidityToken();
 

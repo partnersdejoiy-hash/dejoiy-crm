@@ -2058,6 +2058,15 @@ export class ConfigVariables {
   ENTERPRISE_KEY: string;
 
   @ConfigVariablesMetadata({
+    group: ConfigVariablesGroup.SERVER_CONFIG,
+    description:
+      'Force-enable enterprise features (SSO, row-level security, audit logs, custom AI providers) without requiring a paid enterprise key. Intended for self-hosted Dejoiy deployments.',
+    type: ConfigVariableType.BOOLEAN,
+  })
+  @IsOptional()
+  IS_ENTERPRISE_ENABLED = false;
+
+  @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.ADVANCED_SETTINGS,
     isSensitive: true,
     description:

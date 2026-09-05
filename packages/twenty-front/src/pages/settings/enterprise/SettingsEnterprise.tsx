@@ -621,6 +621,32 @@ export const SettingsEnterprise = ({
       return null;
     }
 
+    // Self-hosted instances with IS_ENTERPRISE_ENABLED have enterprise
+    // features unlocked without a paid key or Stripe subscription. Show a
+    // clean active state instead of purchase/activation CTAs.
+    if (hasValidityToken && !isDefined(stripeStatus)) {
+      return (
+        <Section>
+          <H2Title
+            title={t`Enterprise License`}
+            description={t`Enterprise features are active on this instance.`}
+          />
+          <SubscriptionInfoContainer>
+            <SubscriptionInfoRowContainer
+              label={t`Status`}
+              Icon={IconCheck}
+              currentValue={
+                <StyledStatusContainer>
+                  <StyledStatusDot isActive={true} />
+                  <Trans>Active</Trans>
+                </StyledStatusContainer>
+              }
+            />
+          </SubscriptionInfoContainer>
+        </Section>
+      );
+    }
+
     if (hasOrphanedValidityToken) {
       return (
         <>
@@ -972,8 +998,12 @@ export const SettingsEnterprise = ({
         onConfirmClick={handleReleaseBinding}
       />
       {renderContent()}
-      {hasSignedEnterpriseKey && enterpriseKeyInfoSection}
-      {hasEnterpriseLicense && instanceTypeSection}
+      {hasSignedEnterpriseKey &&
+        !(hasValidityToken && !isDefined(stripeStatus)) &&
+        enterpriseKeyInfoSection}
+      {hasEnterpriseLicense &&
+        !(hasValidityToken && !isDefined(stripeStatus)) &&
+        instanceTypeSection}
     </>
   );
 
