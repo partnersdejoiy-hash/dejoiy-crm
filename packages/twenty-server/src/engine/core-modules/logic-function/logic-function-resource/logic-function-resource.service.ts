@@ -316,7 +316,7 @@ export class LogicFunctionResourceService {
   }
 
   // twenty-sdk is build-time only and twenty-client-sdk is injected at runtime
-  // by Twenty (Lambda SDK layer / server-served modules), so neither needs to
+  // by Dejoiy (Lambda SDK layer / server-served modules), so neither needs to
   // be resolved by the Lambda yarn install. Apps should already declare them as
   // devDependencies (skipped by `yarn workspaces focus --production`); this is a
   // safety net for apps that still list them under "dependencies".

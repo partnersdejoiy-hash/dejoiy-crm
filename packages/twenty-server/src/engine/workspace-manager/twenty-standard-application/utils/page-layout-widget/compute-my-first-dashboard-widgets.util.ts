@@ -188,7 +188,7 @@ const createWelcomeRichText = ({
             },
             {
               type: 'link',
-              href: 'https://docs.twenty.com/getting-started/introduction',
+              href: 'https://docs.dejoiy.com/getting-started/introduction',
               content: [
                 {
                   type: 'text',

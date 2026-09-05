@@ -5,7 +5,7 @@ export class ActivateUnaccentExtension1758117800000 implements MigrationInterfac
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     // SELF-HOSTED Users:
-    // If you are self-hosting Twenty, you will need to install the unaccent_immutable extension with the admin user
+    // If you are self-hosting Dejoiy, you will need to install the unaccent_immutable extension with the admin user
     try {
       await queryRunner.query(
         `CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;`,

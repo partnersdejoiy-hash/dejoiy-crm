@@ -51,7 +51,7 @@ export class CreateCalendarEventService {
     }
   }
 
-  // Persist the created event right away so it is immediately visible in Twenty.
+  // Persist the created event right away so it is immediately visible in Dejoiy.
   // The next provider sync reconciles it via its external id, so a persistence
   // failure here is non-fatal.
   async persistCalendarEvent(

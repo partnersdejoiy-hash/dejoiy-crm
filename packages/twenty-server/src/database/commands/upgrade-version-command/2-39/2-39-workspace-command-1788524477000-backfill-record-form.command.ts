@@ -28,7 +28,7 @@ type BackfillOperationsByApplication = Map<string, BackfillOperations>;
 @Command({
   name: 'upgrade:2-39:backfill-record-form',
   description:
-    'Backfill the RECORD_FORM page layout stack for every object missing it, converging upgraded installs with what objectRecordFormOnCreate and fieldRecordFormWidgetOnCreate emit at creation time. Twenty-standard objects are included: the standard definitions only reach a workspace at creation, so an upgraded workspace would otherwise never get their form, and both paths derive the same entities.',
+    'Backfill the RECORD_FORM page layout stack for every object missing it, converging upgraded installs with what objectRecordFormOnCreate and fieldRecordFormWidgetOnCreate emit at creation time. Dejoiy-standard objects are included: the standard definitions only reach a workspace at creation, so an upgraded workspace would otherwise never get their form, and both paths derive the same entities.',
 })
 export class BackfillRecordFormCommand extends ProvisionedWorkspaceCommandRunner {
   constructor(

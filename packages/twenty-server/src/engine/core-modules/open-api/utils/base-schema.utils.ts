@@ -12,7 +12,7 @@ export const baseSchema = (
   return {
     openapi: '3.1.1',
     info: {
-      title: 'Twenty Api',
+      title: 'Dejoiy Api',
       description: `Use this page to explore and call the **REST API**.
 
 ## Authentication
@@ -106,7 +106,7 @@ order_by=id[AscNullsFirst],createdAt[DescNullsLast]
 ## Usage with LLMs
 
 The recommended way to give an LLM agent (Claude Desktop, Cursor, Windsurf, …)
-access to your workspace is the **Twenty MCP server**, not this OpenAPI schema.
+access to your workspace is the **Dejoiy MCP server**, not this OpenAPI schema.
 The MCP server exposes typed tools the agent can call directly with proper
 header-based auth (OAuth or API key), no tokens in URLs.
 
@@ -128,7 +128,7 @@ curl -H 'Authorization: Bearer <token>' \\
       termsOfService:
         'https://github.com/twentyhq/twenty?tab=coc-ov-file#readme',
       contact: {
-        email: 'felix@twenty.com',
+        email: 'felix@dejoiy.com',
       },
       license: {
         name: 'AGPL-3.0',
@@ -159,8 +159,8 @@ curl -H 'Authorization: Bearer <token>' \\
       },
     ],
     externalDocs: {
-      description: 'Find out more about **Twenty**',
-      url: 'https://twenty.com',
+      description: 'Find out more about **Dejoiy**',
+      url: 'https://dejoiy.com',
     },
     paths: { [`/open-api/${schemaName}`]: computeOpenApiPath(serverUrl) },
   };

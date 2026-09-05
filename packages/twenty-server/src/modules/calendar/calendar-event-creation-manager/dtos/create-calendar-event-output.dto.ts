@@ -5,7 +5,7 @@ export class CreateCalendarEventOutputDTO {
   @Field(() => Boolean)
   success: boolean;
 
-  // Stable cross-provider identifier; query the created event in Twenty by iCalUid.
+  // Stable cross-provider identifier; query the created event in Dejoiy by iCalUid.
   @Field(() => String, { nullable: true })
   iCalUid?: string;
 

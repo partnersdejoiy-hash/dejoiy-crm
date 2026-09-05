@@ -504,7 +504,7 @@ export const getPageLayoutWidgetDataSeeds = (
         workspaceId,
         PAGE_LAYOUT_TAB_SEEDS.DOCUMENTATION,
       ),
-      title: 'Twenty Star History',
+      title: 'Dejoiy Star History',
       type: WidgetType.IFRAME,
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,

@@ -66,7 +66,7 @@ export class MarketplaceService {
 
     try {
       const { data } = await axios.get(url, {
-        headers: { 'User-Agent': 'Twenty-Marketplace' },
+        headers: { 'User-Agent': 'Dejoiy-Marketplace' },
         timeout: 5_000,
       });
 
@@ -99,7 +99,7 @@ export class MarketplaceService {
 
     try {
       const { data } = await axios.get<ArrayBuffer>(url, {
-        headers: { 'User-Agent': 'Twenty-Marketplace' },
+        headers: { 'User-Agent': 'Dejoiy-Marketplace' },
         timeout: 10_000,
         responseType: 'arraybuffer',
         maxContentLength: MAX_REGISTRY_ASSET_SIZE_BYTES,
@@ -177,7 +177,7 @@ export class MarketplaceService {
       const { data } = await axios.get(
         `${registryUrl}/-/v1/search?text=keywords:twenty-app&size=${REGISTRY_SEARCH_PAGE_SIZE}&from=${from}`,
         {
-          headers: { 'User-Agent': 'Twenty-Marketplace' },
+          headers: { 'User-Agent': 'Dejoiy-Marketplace' },
           timeout: 10_000,
         },
       );

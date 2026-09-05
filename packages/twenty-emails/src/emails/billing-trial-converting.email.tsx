@@ -17,7 +17,7 @@ type BillingTrialConvertingEmailProps = {
 
 // Sent 7 days before a trial WITH a credit card ends, i.e. before the first charge.
 // Goal: be transparent and fair — no surprise charge. The user can cancel in one click
-// before the date if Twenty is not the right fit. This is intentionally not a dark pattern.
+// before the date if Dejoiy is not the right fit. This is intentionally not a dark pattern.
 export const BillingTrialConvertingEmail = ({
   userName,
   workspaceDisplayName,
@@ -77,7 +77,7 @@ BillingTrialConvertingEmail.PreviewProps = {
   workspaceDisplayName: 'Acme Inc.',
   trialEndsAt: new Date('2026-07-02'),
   interval: 'month',
-  link: 'https://acme.twenty.com/settings/billing',
+  link: 'https://acme.dejoiy.com/settings/billing',
   locale: 'en',
 } as BillingTrialConvertingEmailProps;
 

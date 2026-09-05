@@ -41,7 +41,7 @@ export const extractFileInfoOrThrow = async ({
   let mimeType: string = 'application/octet-stream';
 
   if (isNonEmptyString(ext)) {
-    // Twenty policy wins over the ext-based fallback for the (small) set of
+    // Dejoiy policy wins over the ext-based fallback for the (small) set of
     // extensions where mrmime's IANA mapping collides with a developer-tooling
     // convention. This branch is only reached when file-type's magic-byte
     // sniff returned nothing — when the bytes actually match (e.g. a real
