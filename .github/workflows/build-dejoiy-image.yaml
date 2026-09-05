@@ -1,0 +1,59 @@
+name: Build Dejoiy CRM image
+
+# Builds the Dejoiy-branded CRM image (frontend + server) on a GitHub-hosted
+# runner — the portal server cannot fit the ~15 GB build — and pushes it to
+# GHCR so the server can pull `ghcr.io/partnersdejoiy-hash/dejoiy-crm:latest`.
+
+on:
+  push:
+    branches:
+      - dejoiy/rebrand
+      - dejoiy/main
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # Pull base images through Google's Docker Hub mirror — avoids Docker Hub
+      # rate limits and needs no credentials (mirrors the upstream CI workflow).
+      - name: Configure Docker Hub mirror
+        run: |
+          echo '{"registry-mirrors":["https://mirror.gcr.io"]}' | sudo tee /etc/docker/daemon.json
+          sudo systemctl restart docker
+
+      - name: Log in to GHCR
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca5145bd269ebc4573d4e1264476b5ae153282 # v3.10.0
+
+      - name: Build and push
+        uses: docker/build-push-action@4f58ea79222b3b9dc2c8bbdd6debcef730109ca75 # v6.9.0
+        with:
+          context: .
+          file: packages/twenty-docker/twenty/Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          # The runner has 7 GB RAM; the Dockerfile default (8 GB heap) would OOM.
+          build-args: |
+            FRONTEND_NODE_OPTIONS=--max-old-space-size=4096
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
