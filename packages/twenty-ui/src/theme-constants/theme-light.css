@@ -95,6 +95,8 @@
   --t-background-secondary: color(display-p3 0.988 0.988 0.988);
   --t-background-tertiary: color(display-p3 0.945 0.945 0.945);
   --t-background-quaternary: color(display-p3 0.922 0.922 0.922);
+  /* DEJOIY: light drawer keeps the standard light surface */
+  --t-navigation-drawer-background: var(--t-background-secondary);
   --t-background-inverted-primary: color(display-p3 0.2 0.2 0.2);
   --t-background-inverted-secondary: color(display-p3 0.4 0.4 0.4);
   --t-background-danger: color(display-p3 0.985 0.925 0.925);

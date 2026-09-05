@@ -36,10 +36,11 @@
 }
 
 .button[data-variant='primary'] {
-  --main-button-bg: var(--t-background-primary-inverted);
-  --main-button-border-color: var(--t-background-transparent-strong);
-  --main-button-color: var(--t-font-color-inverted);
-  --main-button-hover-bg: var(--t-background-primary-inverted-hover);
+  // DEJOIY brand CTA — magenta gradient (white text stays legible on it)
+  --main-button-bg: linear-gradient(135deg, #E91E63 0%, #D81B60 100%);
+  --main-button-border-color: transparent;
+  --main-button-color: #FFFFFF;
+  --main-button-hover-bg: linear-gradient(135deg, #FF2A70 0%, #E91E63 100%);
 }
 
 .button[data-variant='secondary'] {

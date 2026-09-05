@@ -98,6 +98,13 @@
   --t-background-quaternary: #1D3158;
   --t-background-inverted-primary: #F2F6FD;
   --t-background-inverted-secondary: #C9D6EA;
+  /* DEJOIY navy sidebar gradient (brand: #000814 -> #001f3f -> #001a33) */
+  --t-navigation-drawer-background: linear-gradient(
+    180deg,
+    #000814 0%,
+    #001f3f 45%,
+    #001a33 100%
+  );
   --t-background-danger: color(display-p3 0.211 0.081 0.099);
   --t-background-transparent-primary: color(display-p3 0 0 0 / 0.5);
   --t-background-transparent-secondary: color(display-p3 0 0 0 / 0.4);

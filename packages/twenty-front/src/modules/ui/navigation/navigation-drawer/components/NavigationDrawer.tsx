@@ -55,6 +55,7 @@ const StyledAnimatedContainer = styled.div<{
 const StyledContainer = styled.div<{
   isExpanded?: boolean;
 }>`
+  background: var(--t-navigation-drawer-background);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
