@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       # Pull base images through Google's Docker Hub mirror — avoids Docker Hub
       # rate limits and needs no credentials (mirrors the upstream CI workflow).
@@ -36,17 +36,17 @@ jobs:
           sudo systemctl restart docker
 
       - name: Log in to GHCR
-        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@b5ca5145bd269ebc4573d4e1264476b5ae153282 # v3.10.0
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and push
-        uses: docker/build-push-action@4f58ea79222b3b9dc2c8bbdd6debcef730109ca75 # v6.9.0
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: packages/twenty-docker/twenty/Dockerfile
