@@ -50,6 +50,10 @@ jobs:
         with:
           context: .
           file: packages/twenty-docker/twenty/Dockerfile
+          # `twenty` = server + frontend (external DB/Redis via env), matching
+          # the upstream twentycrm/twenty image the compose file expects. The
+          # default target would build the all-in-one dev image (internal DB).
+          target: twenty
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           # The runner has 7 GB RAM; the Dockerfile default (8 GB heap) would OOM.
