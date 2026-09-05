@@ -1,17 +1,27 @@
 import * as RadixColors from '@radix-ui/colors';
 
 import { COLOR_DARK } from '@ui/theme/constants/ColorsDark';
-import { GRAY_SCALE_DARK } from './GrayScaleDark';
 import { TRANSPARENT_COLORS_DARK } from './TransparentColorsDark';
+
+// DEJOIY navy canvas (dark theme) — follows the official brand gradient
+// #000814 -> #001f3f -> #001a33 used across the Dejoiy design system.
+const NAVY_DARK = {
+  navy0: '#000814',
+  navy1: '#081226',
+  navy2: '#0C1A33',
+  navy3: '#102141',
+  navy4: '#16294C',
+  navy5: '#1D3158',
+};
 
 export const BACKGROUND_DARK = {
   noisy: 'var(--t-background-noisy)',
-  primary: GRAY_SCALE_DARK.gray1,
-  secondary: GRAY_SCALE_DARK.gray2,
-  tertiary: GRAY_SCALE_DARK.gray4,
-  quaternary: GRAY_SCALE_DARK.gray5,
-  invertedPrimary: GRAY_SCALE_DARK.gray12,
-  invertedSecondary: GRAY_SCALE_DARK.gray11,
+  primary: NAVY_DARK.navy1,
+  secondary: NAVY_DARK.navy2,
+  tertiary: NAVY_DARK.navy4,
+  quaternary: NAVY_DARK.navy5,
+  invertedPrimary: '#F2F6FD',
+  invertedSecondary: '#C9D6EA',
   danger: COLOR_DARK.red3,
   transparent: {
     primary: RadixColors.blackP3A.blackA7,
@@ -28,8 +38,8 @@ export const BACKGROUND_DARK = {
   overlayPrimary: '#000000b8',
   overlaySecondary: '#0000005c',
   overlayTertiary: '#0000005c',
-  radialGradient: `radial-gradient(50% 62.62% at 50% 0%, ${GRAY_SCALE_DARK.gray9} 0%, ${GRAY_SCALE_DARK.gray10} 100%)`,
-  radialGradientHover: `radial-gradient(76.32% 95.59% at 50% 0%, ${GRAY_SCALE_DARK.gray10} 0%, ${GRAY_SCALE_DARK.gray11} 100%)`,
-  primaryInverted: GRAY_SCALE_DARK.gray12,
-  primaryInvertedHover: GRAY_SCALE_DARK.gray11,
+  radialGradient: `radial-gradient(50% 62.62% at 50% 0%, ${NAVY_DARK.navy4} 0%, ${NAVY_DARK.navy1} 100%)`,
+  radialGradientHover: `radial-gradient(76.32% 95.59% at 50% 0%, ${NAVY_DARK.navy5} 0%, ${NAVY_DARK.navy2} 100%)`,
+  primaryInverted: '#F2F6FD',
+  primaryInvertedHover: '#D8E2F2',
 };

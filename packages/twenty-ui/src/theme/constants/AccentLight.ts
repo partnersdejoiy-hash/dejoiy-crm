@@ -1,23 +1,24 @@
-import * as RadixColors from '@radix-ui/colors';
-import { COLOR_LIGHT } from '@ui/theme/constants/ColorsLight';
-
+// DEJOIY brand accent — magenta ramp derived from the official brand color
+// #E91E63 (icon gradient start) blended to #D946EF / #00BCD4 accents.
+// Custom hex ramp (light): step 9 is the exact brand magenta used for solid
+// buttons; steps 11-12 are deep enough for readable text on light surfaces.
 export const ACCENT_LIGHT = {
-  primary: COLOR_LIGHT.blue5,
-  secondary: COLOR_LIGHT.blue5,
-  tertiary: COLOR_LIGHT.blue3,
-  quaternary: COLOR_LIGHT.blue2,
-  accent3570: COLOR_LIGHT.blue8,
-  accent4060: COLOR_LIGHT.blue8,
-  accent1: RadixColors.indigoP3.indigo1,
-  accent2: RadixColors.indigoP3.indigo2,
-  accent3: RadixColors.indigoP3.indigo3,
-  accent4: RadixColors.indigoP3.indigo4,
-  accent5: RadixColors.indigoP3.indigo5,
-  accent6: RadixColors.indigoP3.indigo6,
-  accent7: RadixColors.indigoP3.indigo7,
-  accent8: RadixColors.indigoP3.indigo8,
-  accent9: RadixColors.indigoP3.indigo9,
-  accent10: RadixColors.indigoP3.indigo10,
-  accent11: RadixColors.indigoP3.indigo11,
-  accent12: RadixColors.indigoP3.indigo12,
+  primary: '#E91E63',
+  secondary: '#E91E63',
+  tertiary: '#FFD9E7',
+  quaternary: '#FFF2F7',
+  accent3570: '#E91E63',
+  accent4060: '#D31355',
+  accent1: '#FFF7FA',
+  accent2: '#FFEBF2',
+  accent3: '#FFDCE9',
+  accent4: '#FFC9DC',
+  accent5: '#FCAFCA',
+  accent6: '#F78DB2',
+  accent7: '#F16898',
+  accent8: '#E93F7D',
+  accent9: '#E91E63',
+  accent10: '#D31355',
+  accent11: '#C20F4C',
+  accent12: '#7F0D3A',
 };
